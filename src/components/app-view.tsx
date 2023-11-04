@@ -3,10 +3,6 @@ import {isNumber} from 'lodash';
 import React, {PropsWithChildren} from 'react';
 import {Platform, StyleSheet, View, ViewProps, ViewStyle} from 'react-native';
 import {useSafeAreaInsets} from 'react-native-safe-area-context';
-import styles from './styles';
-import {SpacingElement} from './constants';
-import _ from 'lodash';
-import {ISpacing} from 'src/utils/app-const';
 
 type IViewStyle = Omit<ViewStyle, 'flex'>;
 interface IAppView extends ViewProps, IViewStyle {
@@ -28,7 +24,7 @@ interface IAppView extends ViewProps, IViewStyle {
   relative?: boolean;
   absolute?: boolean;
   isPaddingIos?: boolean;
-  spacing?: ISpacing | number;
+  //   spacing?: ISpacing | number;
   safeArea?: boolean;
   safeAreaTop?: boolean;
   safeAreaLeft?: boolean;
@@ -98,7 +94,6 @@ export const AppView = ({
   zIndex,
   borderTopLeftRadius,
   borderTopRightRadius,
-  spacing,
   safeArea,
   safeAreaTop,
   safeAreaLeft,
