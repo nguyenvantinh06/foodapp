@@ -201,7 +201,7 @@ export const AppView = ({
     // }
 
     return children;
-  }, [spacing, children]);
+  }, [children]);
 
   return (
     <View style={blockStyles} {...rest}>

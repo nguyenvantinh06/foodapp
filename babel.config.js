@@ -19,5 +19,6 @@ module.exports = {
     'jest-hoist',
     'react-native-reanimated/plugin',
     ['@babel/plugin-proposal-decorators', { legacy: true }],
+    "nativewind/babel"
   ],
 };

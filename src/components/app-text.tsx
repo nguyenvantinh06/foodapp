@@ -1,7 +1,6 @@
 /* eslint-disable no-sparse-arrays */
 import React, {useMemo} from 'react';
 import {Text, StyleSheet, ViewStyle, TextStyle} from 'react-native';
-import {useTheme} from 'react-native-paper';
 import {getSize} from 'src/hooks/use-resize-hoc';
 import {useAppTheme} from 'src/config/theme-config';
 import {FONT_FAMILY} from 'src/config/theme';
@@ -105,9 +104,7 @@ export function mapPropsToFontStyle(props: any) {
 
   const familyDefault = 'regular';
   const newProps = {
-    fontFamily: !fontWeight
-      ? FONT_FAMILY[`${familyDefault.toUpperCase()}`]
-      : FONT_FAMILY[`${fontWeight.toUpperCase()}`],
+    fontFamily: FONT_FAMILY.regular,
   };
 
   return newProps;

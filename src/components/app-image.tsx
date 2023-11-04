@@ -52,7 +52,7 @@ function AppImage({style, source, url, imgError, iconError, ...rest}: Props) {
           styles.container,
           style,
           {
-            backgroundColor: AppStyles.color.COLOR_BORDER,
+            backgroundColor: COLORS.DarkGrey,
           },
         ]}>
         {iconError ? <>{iconError}</> : <AppText>Error</AppText>}
