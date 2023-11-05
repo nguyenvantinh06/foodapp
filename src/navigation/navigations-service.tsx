@@ -15,6 +15,12 @@ function navigate(name: ScreenNames | SCENE_NAME, params?: any) {
   navigation?.navigate<any>(name, params);
 }
 
+function push(name: ScreenNames | SCENE_NAME, params?: any) {
+  const navigation: StackNavigation =
+    navigationRef.current as unknown as StackNavigation;
+  navigation?.push<any>(name, params);
+}
+
 function goBack() {
   navigationRef.current?.goBack();
 }
@@ -22,6 +28,7 @@ function goBack() {
 const NavigationService = {
   navigate,
   goBack,
+  push,
 };
 
 export default NavigationService;

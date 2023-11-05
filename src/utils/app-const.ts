@@ -11,9 +11,11 @@ export const deviceHeight =
 export enum SCENE_NAME {
   WELCOME = 'WELCOME',
   LOGIN = 'LOGIN',
+  SIGN_UP = 'SIGN_UP',
   ROOT = 'ROOT',
   HOME_TAB = 'HOME_TAB',
   RECIPE_DETAIL = 'RECIPE_DETAIL',
+  ON_BOARDING = 'ON_BOARDING',
 }
 
 export const REGEX_DATE_SHORT =

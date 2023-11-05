@@ -15,6 +15,9 @@ import WelcomeScreen from 'src/screens/WelcomeScreen';
 import HomeScreen from 'src/screens/HomeScreen';
 import RecipeDetailScreen from 'src/screens/RecipeDetailScreen';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
+import LoginScreen from 'src/screens/auth/LoginScreen';
+import SignUpScreen from 'src/screens/auth/SignUpScreen';
+import OnboardingScreen from 'src/screens/OnboardingScreen';
 
 const Stack = createNativeStackNavigator();
 const AuthStack = createNativeStackNavigator();
@@ -35,7 +38,9 @@ const Todo = () => {
 const AuthNavigator = () => {
   // const isLoggedIn = useAppSelector(state => state.auth.isLoggedIn);
   return (
-    <AuthStack.Navigator screenOptions={{headerShown: false}}>
+    <AuthStack.Navigator
+      screenOptions={{headerShown: false}}
+      initialRouteName={SCENE_NAME.WELCOME}>
       {/* <Stack.Screen
         name={SCENE_NAME.LOGIN}
         component={LoginScreen}
@@ -67,6 +72,12 @@ const AuthNavigator = () => {
           presentation: 'fullScreenModal',
         }}
         component={RecipeDetailScreen}
+      />
+      <Stack.Screen name={SCENE_NAME.LOGIN} component={LoginScreen} />
+      <Stack.Screen name={SCENE_NAME.SIGN_UP} component={SignUpScreen} />
+      <Stack.Screen
+        name={SCENE_NAME.ON_BOARDING}
+        component={OnboardingScreen}
       />
       {/* <Stack.Screen
         name={SCENE_NAME.LOGIN}
