@@ -13,10 +13,12 @@ import {useAppTheme} from 'src/config/theme-config';
 import AppText from 'src/components/app-text';
 import WelcomeScreen from 'src/screens/WelcomeScreen';
 import HomeScreen from 'src/screens/HomeScreen';
+import RecipeDetailScreen from 'src/screens/RecipeDetailScreen';
+import {createNativeStackNavigator} from '@react-navigation/native-stack';
 
-const Stack = createStackNavigator();
-const AuthStack = createStackNavigator();
-const LoggedInStack = createStackNavigator();
+const Stack = createNativeStackNavigator();
+const AuthStack = createNativeStackNavigator();
+const LoggedInStack = createNativeStackNavigator();
 
 interface IProps {
   theme: Theme;
@@ -44,18 +46,27 @@ const AuthNavigator = () => {
       <Stack.Screen
         name={SCENE_NAME.WELCOME}
         component={WelcomeScreen}
-        options={{
-          animationEnabled: false,
-          // animationTypeForReplace: isLoggedIn ? 'push' : 'pop',
-        }}
+        options={
+          {
+            // animationTypeForReplace: isLoggedIn ? 'push' : 'pop',
+          }
+        }
       />
       <Stack.Screen
         name={SCENE_NAME.HOME_TAB}
         component={HomeScreen}
+        options={
+          {
+            // animationTypeForReplace: isLoggedIn ? 'push' : 'pop',
+          }
+        }
+      />
+      <Stack.Screen
+        name={SCENE_NAME.RECIPE_DETAIL}
         options={{
-          animationEnabled: false,
-          // animationTypeForReplace: isLoggedIn ? 'push' : 'pop',
+          presentation: 'fullScreenModal',
         }}
+        component={RecipeDetailScreen}
       />
       {/* <Stack.Screen
         name={SCENE_NAME.LOGIN}
@@ -92,13 +103,10 @@ const LoggedInNavigator = () => {
       // initialRouteName={SCENE_NAME.ERROR_UNDER_CONSTRUCTION}
       screenOptions={{headerShown: false}}>
       <Stack.Screen name={SCENE_NAME.ROOT} component={BottomTabStack} />
-      {/* <Stack.Screen
-        name={SCENE_NAME.MESSAGE_DETAIL}
-        component={MessageDetailScreen}
-        options={{
-          cardStyleInterpolator: CardStyleInterpolators.forVerticalIOS,
-        }}
-      /> */}
+      <Stack.Screen
+        name={SCENE_NAME.RECIPE_DETAIL}
+        component={RecipeDetailScreen}
+      />
       {/* <Stack.Screen name={SCENE_NAME.CURRENT_TRIP_DETAIL_SCREEN}>
         {props => (
           <CurrentTripDetail

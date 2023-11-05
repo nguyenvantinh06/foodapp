@@ -10,8 +10,10 @@ import {useNavigation} from '@react-navigation/native';
 import Loading from 'src/components/app-loading';
 import AppImage from './app-image';
 import AppText from './app-text';
+import NavigationService from 'src/navigation/navigations-service';
+import {SCENE_NAME} from 'src/utils/app-const';
 
-export default function Recipes({categories, meals}) {
+export default function Recipes({categories, meals}: any) {
   const navigation = useNavigation();
   return (
     <View className="mx-4 space-y-3">
@@ -29,9 +31,7 @@ export default function Recipes({categories, meals}) {
             keyExtractor={item => item.idMeal}
             numColumns={2}
             showsVerticalScrollIndicator={false}
-            renderItem={({item, i}) => (
-              <RecipeCard item={item} index={i} navigation={navigation} />
-            )}
+            renderItem={({item, i}) => <RecipeCard item={item} index={i} />}
             // refreshing={isLoadingNext}
             // onRefresh={() => refetch({first: ITEM_CNT})}
             onEndReachedThreshold={0.1}
@@ -43,7 +43,7 @@ export default function Recipes({categories, meals}) {
   );
 }
 
-const RecipeCard = ({item, index, navigation}) => {
+const RecipeCard = ({item, index}: any) => {
   let isEven = index % 2 == 0;
   return (
     <Animated.View
@@ -58,7 +58,9 @@ const RecipeCard = ({item, index, navigation}) => {
           paddingRight: isEven ? 8 : 0,
         }}
         className="flex justify-center mb-4 space-y-1"
-        onPress={() => navigation.navigate('RecipeDetail', {...item})}>
+        onPress={() =>
+          NavigationService.navigate(SCENE_NAME.RECIPE_DETAIL, {...item})
+        }>
         <AppImage
           source={{uri: item.strMealThumb}}
           style={{
@@ -67,6 +69,7 @@ const RecipeCard = ({item, index, navigation}) => {
             borderRadius: 35,
           }}
           className="bg-black/5"
+          // sharedTransitionTag={item.strMeal}
         />
 
         <AppText

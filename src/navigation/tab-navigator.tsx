@@ -63,7 +63,7 @@ const HomeStack = React.memo(() => (
 // ));
 
 const BottomTabStack = () => {
-  const {orientation} = useOrientation();
+  // const {orientation} = useOrientation();
   const [visible, setVisible] = React.useState<boolean>(true);
   // hide bottom tab when keyboard show
   React.useEffect(() => {
@@ -84,13 +84,13 @@ const BottomTabStack = () => {
     };
   }, []);
 
-  React.useEffect(() => {
-    if (orientation === 'PORTRAIT') {
-      setVisible(true);
-    } else {
-      setVisible(false);
-    }
-  }, [orientation]);
+  // React.useEffect(() => {
+  //   if (orientation === 'PORTRAIT') {
+  //     setVisible(true);
+  //   } else {
+  //     setVisible(false);
+  //   }
+  // }, [orientation]);
 
   // const tabPressListener = props => {
   //   const {navigation} = props;
