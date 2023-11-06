@@ -1,9 +1,11 @@
 package com.foodapp;
+import android.os.Bundle; // Add this here
 
 import com.facebook.react.ReactActivity;
 import com.facebook.react.ReactActivityDelegate;
 import com.facebook.react.defaults.DefaultNewArchitectureEntryPoint;
 import com.facebook.react.defaults.DefaultReactActivityDelegate;
+import org.devio.rn.splashscreen.SplashScreen; // Add this here
 
 public class MainActivity extends ReactActivity {
 
@@ -16,6 +18,12 @@ public class MainActivity extends ReactActivity {
     return "FoodApp";
   }
 
+  @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        SplashScreen.show(this);  // Add this here
+        super.onCreate(savedInstanceState);
+    }
+    
   /**
    * Returns the instance of the {@link ReactActivityDelegate}. Here we use a util class {@link
    * DefaultReactActivityDelegate} which allows you to easily enable Fabric and Concurrent React

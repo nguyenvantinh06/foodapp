@@ -45,12 +45,17 @@
 //   flex: 1,
 // });
 
-import React from 'react';
+import React, {useEffect} from 'react';
 import {GestureHandlerRootView} from 'react-native-gesture-handler';
 import RootScreens from 'src/screens';
 import './locales/IMLocalize';
+import SplashScreen from 'react-native-splash-screen';
 
 export default function App() {
+  useEffect(() => {
+    SplashScreen.hide();
+  }, []);
+
   return (
     <GestureHandlerRootView style={{flex: 1}}>
       {/* content */}
