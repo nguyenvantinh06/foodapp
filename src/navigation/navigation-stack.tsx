@@ -137,7 +137,7 @@ const LoggedInNavigator = () => {
 const App: React.FC<IProps> = () => {
   const theme = useAppTheme();
   // const isLoggedIn = useAppSelector(state => state.auth.isLoggedIn);
-  const isLoggedIn = false;
+  const isLoggedIn = true;
   React.useEffect(() => {
     return StatusBar.setBarStyle('dark-content');
   }, []);

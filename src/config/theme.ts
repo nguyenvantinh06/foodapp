@@ -46,6 +46,7 @@ interface Color {
   WhiteRGBA50: string;
   WhiteRGBA32: string;
   WhiteRGBA15: string;
+  Primary: string;
 }
 
 export const COLORS: Color = {
@@ -61,6 +62,7 @@ export const COLORS: Color = {
   WhiteRGBA50: 'rgba(255,255,255,0.50)',
   WhiteRGBA32: 'rgba(255,255,255,0.32)',
   WhiteRGBA15: 'rgba(255,255,255,0.15)',
+  Primary: '#F59E0B',
 };
 
 interface FontFamily {

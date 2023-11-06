@@ -20,3 +20,11 @@ export const handleOpenLink = async (url: string) => {
     Alert.alert(`Don't know how to open this URL: ${url}`);
   }
 };
+
+export const parseBadge = (number: number) => {
+  if (Number.isInteger(number) && number > 99) {
+    return '99+';
+  } else {
+    return number.toString();
+  }
+};

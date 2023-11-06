@@ -3,7 +3,6 @@ import React from 'react';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import _ from 'lodash';
 
-import BottomTabView from 'src/components/bottom-tab-view';
 import AppText from 'src/components/app-text';
 import AppView from 'src/components/app-view';
 import {useAppTheme} from 'src/config/theme-config';
@@ -13,6 +12,8 @@ import {
 } from '@react-navigation/stack';
 import {SCENE_NAME} from 'src/utils/app-const';
 import {StackActions} from '@react-navigation/native';
+import HomeScreen from 'src/screens/HomeScreen';
+import BottomTabView from 'src/components/bottom-tab-view';
 
 const Todo = () => {
   return (
@@ -35,9 +36,9 @@ const HomeStack = React.memo(() => (
       headerShown: false,
     }}>
     <Stack.Screen name={'HomeScreen'} component={HomeScreen} />
-    <Stack.Screen name={'ExampleScreen'}>
+    {/* <Stack.Screen name={'ExampleScreen'}>
       {props => <TestScreen hasBack={true} {...props} />}
-    </Stack.Screen>
+    </Stack.Screen> */}
     {/* <Stack.Screen
       name={SCENE_NAME.NOTIFICATIONS_SCREEN}
       component={NotificationsScreen}
@@ -112,50 +113,43 @@ const BottomTabStack = () => {
 
   return (
     <Tab.Navigator
-      initialRouteName={'HomeTab'}
+      initialRouteName={SCENE_NAME.HOME_TAB}
       screenOptions={{
         headerShown: false,
-      }}>
-      {/* tabBar={props => {
+      }}
+      tabBar={props => {
         if (!visible) {
           return null;
         }
         return <BottomTabView {...props} />;
-      }}> */}
-      {/* <Tab.Screen
+      }}>
+      <Tab.Screen
         name={SCENE_NAME.HOME_TAB}
         component={HomeStack}
         options={{title: 'Home'}}
         // listeners={props => tabPressListener({...props})}
       />
       <Tab.Screen
-        name={SCENE_NAME.CHECK_IN_TAB}
-        component={CheckInScreen}
+        name={SCENE_NAME.ACTIVITIES_TAB}
+        component={Todo}
         options={{
-          title: 'Check-in',
+          title: 'Activities',
         }}
       />
       <Tab.Screen
-        name={SCENE_NAME.UPDATES_TAB}
-        component={UpdateScreen}
+        name={SCENE_NAME.LIKES_TAB}
+        component={Todo}
         options={{
-          title: 'Updates',
+          title: 'Likes',
         }}
       />
       <Tab.Screen
         name={SCENE_NAME.PROFILE_TAB}
-        component={ProfileScreen}
+        component={Todo}
         options={{
           title: 'Profile',
         }}
       />
-      <Tab.Screen
-        name={SCENE_NAME.HELP_TAB}
-        component={HelpScreen}
-        options={{
-          title: 'Help',
-        }}
-      /> */}
     </Tab.Navigator>
   );
 };
