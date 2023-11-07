@@ -14,6 +14,13 @@ import {SCENE_NAME} from 'src/utils/app-const';
 import {StackActions} from '@react-navigation/native';
 import HomeScreen from 'src/screens/HomeScreen';
 import BottomTabView from 'src/components/bottom-tab-view';
+import {
+  AnimatedTabBarNavigator,
+  DotSize,
+  TabElementDisplayOptions,
+} from 'react-native-animated-nav-tab-bar';
+import VectorIcon from 'src/components/vector-icons';
+import {getSize} from 'src/hooks/use-resize-hoc';
 
 const Todo = () => {
   return (
@@ -23,7 +30,7 @@ const Todo = () => {
   );
 };
 
-const Tab = createBottomTabNavigator();
+const Tab = AnimatedTabBarNavigator();
 const Stack =
   createStackNavigator<
     Record<'HomeScreen' | 'NOTIFICATIONS_SCREEN', undefined>
@@ -117,16 +124,38 @@ const BottomTabStack = () => {
       screenOptions={{
         headerShown: false,
       }}
-      tabBar={props => {
-        if (!visible) {
-          return null;
-        }
-        return <BottomTabView {...props} />;
+      tabBarOptions={{
+        tabStyle: {
+          shadowColor: '#000',
+          shadowOffset: {
+            width: 0,
+            height: 12,
+          },
+          shadowOpacity: 0.58,
+          shadowRadius: 16,
+          elevation: 12,
+        },
+      }}
+      appearance={{
+        shadow: true,
+        // floating: true,
+        // whenActiveShow: TabElementDisplayOptions.ICON_ONLY,
+        dotSize: DotSize.SMALL,
       }}>
       <Tab.Screen
         name={SCENE_NAME.HOME_TAB}
         component={HomeStack}
-        options={{title: 'Home'}}
+        options={{
+          title: 'Home',
+          tabBarIcon: ({focused, color}) => (
+            // <TabBarIcon focused={focused} tintColor={color} name="home" />
+            <VectorIcon.Feather
+              name="home"
+              size={getSize.m(18)}
+              color={color}
+            />
+          ),
+        }}
         // listeners={props => tabPressListener({...props})}
       />
       <Tab.Screen
@@ -134,6 +163,13 @@ const BottomTabStack = () => {
         component={Todo}
         options={{
           title: 'Activities',
+          tabBarIcon: ({focused, color}) => (
+            <VectorIcon.Feather
+              name="package"
+              size={getSize.m(18)}
+              color={color}
+            />
+          ),
         }}
       />
       <Tab.Screen
@@ -141,6 +177,13 @@ const BottomTabStack = () => {
         component={Todo}
         options={{
           title: 'Likes',
+          tabBarIcon: ({focused, color}) => (
+            <VectorIcon.Feather
+              name="heart"
+              size={getSize.m(18)}
+              color={color}
+            />
+          ),
         }}
       />
       <Tab.Screen
@@ -148,6 +191,13 @@ const BottomTabStack = () => {
         component={Todo}
         options={{
           title: 'Profile',
+          tabBarIcon: ({focused, color}) => (
+            <VectorIcon.Feather
+              name="user"
+              size={getSize.m(18)}
+              color={color}
+            />
+          ),
         }}
       />
     </Tab.Navigator>
