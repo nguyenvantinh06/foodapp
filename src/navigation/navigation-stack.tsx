@@ -18,6 +18,7 @@ import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import LoginScreen from 'src/screens/auth/LoginScreen';
 import SignUpScreen from 'src/screens/auth/SignUpScreen';
 import OnboardingScreen from 'src/screens/OnboardingScreen';
+import RestaurantScreen from 'src/screens/RestaurantScreen';
 
 const Stack = createNativeStackNavigator();
 const AuthStack = createNativeStackNavigator();
@@ -117,6 +118,10 @@ const LoggedInNavigator = () => {
       <Stack.Screen
         name={SCENE_NAME.RECIPE_DETAIL}
         component={RecipeDetailScreen}
+      />
+      <Stack.Screen
+        name={SCENE_NAME.RESTAURANT_SCREEN}
+        component={RestaurantScreen}
       />
       {/* <Stack.Screen name={SCENE_NAME.CURRENT_TRIP_DETAIL_SCREEN}>
         {props => (
