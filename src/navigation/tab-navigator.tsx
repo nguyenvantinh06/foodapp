@@ -163,10 +163,10 @@ const BottomTabStack = () => {
         name={SCENE_NAME.ACTIVITIES_TAB}
         component={HomeDeliveryScreen}
         options={{
-          title: 'Activities',
+          title: 'Groceries',
           tabBarIcon: ({focused, color}) => (
-            <VectorIcon.Feather
-              name="package"
+            <VectorIcon.FontAwesome
+              name="shopping-basket"
               size={getSize.m(18)}
               color={color}
             />

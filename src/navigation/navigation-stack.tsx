@@ -19,6 +19,9 @@ import LoginScreen from 'src/screens/auth/LoginScreen';
 import SignUpScreen from 'src/screens/auth/SignUpScreen';
 import OnboardingScreen from 'src/screens/OnboardingScreen';
 import RestaurantScreen from 'src/screens/RestaurantScreen';
+import CartScreen from 'src/screens/CartScreen';
+import OrderPreparingScreen from 'src/screens/OrderPreparingScreen';
+import DeliveryScreen from 'src/screens/DeliveryScreen';
 
 const Stack = createNativeStackNavigator();
 const AuthStack = createNativeStackNavigator();
@@ -122,6 +125,21 @@ const LoggedInNavigator = () => {
       <Stack.Screen
         name={SCENE_NAME.RESTAURANT_SCREEN}
         component={RestaurantScreen}
+      />
+      <Stack.Screen
+        name={SCENE_NAME.CART_SCREEN}
+        component={CartScreen}
+        options={{presentation: 'modal'}}
+      />
+      <Stack.Screen
+        name={SCENE_NAME.PREPARING_SCREEN}
+        component={OrderPreparingScreen}
+        options={{presentation: 'fullScreenModal'}}
+      />
+      <Stack.Screen
+        name={SCENE_NAME.DELIVER_SCREEN}
+        component={DeliveryScreen}
+        options={{presentation: 'fullScreenModal'}}
       />
       {/* <Stack.Screen name={SCENE_NAME.CURRENT_TRIP_DETAIL_SCREEN}>
         {props => (

@@ -5,6 +5,7 @@ import {useDispatch, useSelector} from 'react-redux';
 import {useNavigation} from '@react-navigation/native';
 import {themeColors} from 'src/config/theme';
 import AppText from './app-text';
+import {SCENE_NAME} from 'src/utils/app-const';
 // import { selectResturant } from '../slices/resturantSlice';
 
 export default function BasketIcon() {
@@ -16,7 +17,7 @@ export default function BasketIcon() {
     <View className="absolute bottom-5 w-full z-50">
       <TouchableOpacity
         style={{backgroundColor: themeColors.bgColor(1)}}
-        onPress={() => navigation.navigate('Cart')}
+        onPress={() => navigation.navigate(SCENE_NAME.CART_SCREEN)}
         className="flex-row justify-between items-center mx-5 rounded-full p-4 py-3 shadow-lg">
         <View
           className="p-2 px-4 rounded-full"
