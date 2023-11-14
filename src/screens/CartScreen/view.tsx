@@ -7,9 +7,6 @@ import {
   ScrollView,
 } from 'react-native';
 import React, {useMemo, useState} from 'react';
-import {useDispatch, useSelector} from 'react-redux';
-// import { removeFromBasket, selectBasketItems, selectBasketTotal } from '../slices/basketSlice';
-// import { selectResturant } from '../slices/resturantSlice';
 import {useNavigation} from '@react-navigation/native';
 import {featuredDelivery} from 'src/utils/dummy-data';
 import {themeColors} from 'src/config/theme';
@@ -18,30 +15,37 @@ import {getSize} from 'src/hooks/use-resize-hoc';
 import AppText from 'src/components/app-text';
 import AppImage from 'src/components/app-image';
 import {SCENE_NAME} from 'src/utils/app-const';
+import {useAppDispatch, useAppSelector} from 'src/store/hooks';
+import {selectRestaurant} from 'src/store/slices/restaurant-slice';
+import {
+  removeFromBasket,
+  selectBasketItems,
+  selectBasketTotal,
+} from 'src/store/slices/basket-slice';
 // import { urlFor } from '../sanity';
 
 export default function CartScreen() {
-  // const restaurant = useSelector(selectResturant);
-  const restaurant = featuredDelivery[0].restaurants[0];
+  const restaurant = useAppSelector(selectRestaurant);
+  // const restaurant = featuredDelivery[0].restaurants[0];
   const [groupedItems, setGroupedItems] = useState([]);
-  // const basketItems = useSelector(selectBasketItems);
-  // const basketTotal = useSelector(selectBasketTotal);
-
-  // const dispatch = useDispatch();
+  const basketItems = useAppSelector(selectBasketItems);
+  const basketTotal = useAppSelector(selectBasketTotal);
+  console.log('groupedItems', groupedItems);
+  const dispatch = useAppDispatch();
   const navigation = useNavigation();
   const deliveryFee = 2;
-  // useMemo(() => {
-  //   const gItems = basketItems.reduce((group, item) => {
-  //     if (group[item.id]) {
-  //       group[item.id].push(item);
-  //     } else {
-  //       group[item.id] = [item];
-  //     }
-  //     return group;
-  //   }, {});
-  //   setGroupedItems(gItems);
-  //   // console.log('items: ',gItems);
-  // }, [basketItems]);
+  useMemo(() => {
+    const gItems = basketItems.reduce((group, item) => {
+      if (group[item.id]) {
+        group[item.id].push(item);
+      } else {
+        group[item.id] = [item];
+      }
+      return group;
+    }, {});
+    setGroupedItems(gItems);
+    // console.log('items: ',gItems);
+  }, [basketItems]);
 
   return (
     <View className=" bg-white flex-1">
@@ -88,7 +92,7 @@ export default function CartScreen() {
         contentContainerStyle={{
           paddingBottom: 50,
         }}>
-        {/* {Object.entries(groupedItems).map(([key, items]) => {
+        {Object.entries(groupedItems).map(([key, items]) => {
           return (
             <View
               key={key}
@@ -99,7 +103,7 @@ export default function CartScreen() {
               <AppImage
                 className="h-14 w-14 rounded-full"
                 // source={{uri: urlFor(items[0]?.image).url()}}
-                source={}
+                source={items[0]?.image}
               />
               <AppText className="flex-1 font-bold text-gray-700">
                 {items[0]?.name}
@@ -119,8 +123,8 @@ export default function CartScreen() {
               </TouchableOpacity>
             </View>
           );
-        })} */}
-        {restaurant?.dishes?.map((dish, index) => {
+        })}
+        {/* {restaurant?.dishes?.map((dish, index) => {
           return (
             <View
               key={index}
@@ -151,7 +155,7 @@ export default function CartScreen() {
               </TouchableOpacity>
             </View>
           );
-        })}
+        })} */}
       </ScrollView>
       {/* totals */}
       <View
@@ -159,15 +163,17 @@ export default function CartScreen() {
         className=" p-6 px-8 rounded-t-3xl space-y-4">
         <View className="flex-row justify-between">
           <AppText className="text-gray-700">Subtotal</AppText>
-          <AppText className="text-gray-700">$20</AppText>
+          <AppText className="text-gray-700">${basketTotal}</AppText>
         </View>
         <View className="flex-row justify-between">
           <AppText className="text-gray-700">Delivery Fee</AppText>
-          <AppText className="text-gray-700">$30</AppText>
+          <AppText className="text-gray-700">${deliveryFee}</AppText>
         </View>
         <View className="flex-row justify-between">
           <AppText className="font-extrabold">Order Total</AppText>
-          <AppText className="font-extrabold">$50</AppText>
+          <AppText className="font-extrabold">
+            ${basketTotal + deliveryFee}
+          </AppText>
         </View>
         <View>
           <TouchableOpacity

@@ -19,7 +19,7 @@ import FeatureRow from 'src/components/featured-row';
 // import { getFeaturedResturants } from '../api';
 // import * as Icon from "react-native-feather";
 
-export default function HomeDeliveryScreen() {
+export default function GroceriesScreen() {
   // const [featuredCategories, setFeaturedCategories] = useState([])
   const navigation = useNavigation();
   // useLayoutEffect(() => {
@@ -85,10 +85,10 @@ export default function HomeDeliveryScreen() {
 
         {/* featured */}
         <View className="mt-5">
-          {featuredDelivery?.map(category => {
+          {featuredDelivery?.map((category, index) => {
             return (
               <FeatureRow
-                key={category._id || category?.id}
+                key={index}
                 id={category._id || category?.id}
                 // title={category.name}
                 // restaurants={category?.restaurants}

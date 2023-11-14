@@ -21,7 +21,7 @@ import {
 } from 'react-native-animated-nav-tab-bar';
 import VectorIcon from 'src/components/vector-icons';
 import {getSize} from 'src/hooks/use-resize-hoc';
-import HomeDeliveryScreen from 'src/screens/HomeDeliveryScreen';
+import GroceriesScreen from 'src/screens/GroceriesScreen';
 
 const Todo = () => {
   return (
@@ -160,8 +160,8 @@ const BottomTabStack = () => {
         // listeners={props => tabPressListener({...props})}
       />
       <Tab.Screen
-        name={SCENE_NAME.ACTIVITIES_TAB}
-        component={HomeDeliveryScreen}
+        name={SCENE_NAME.GROCERIES_TAB}
+        component={GroceriesScreen}
         options={{
           title: 'Groceries',
           tabBarIcon: ({focused, color}) => (

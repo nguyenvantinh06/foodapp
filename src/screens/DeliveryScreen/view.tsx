@@ -18,17 +18,20 @@ import {getSize} from 'src/hooks/use-resize-hoc';
 import VectorIcon from 'src/components/vector-icons';
 import {featuredDelivery} from 'src/utils/dummy-data';
 import {SCENE_NAME} from 'src/utils/app-const';
+import {selectRestaurant} from 'src/store/slices/restaurant-slice';
+import {useAppDispatch, useAppSelector} from 'src/store/hooks';
+import {emptyBasket} from 'src/store/slices/basket-slice';
 // import { themeColors } from '../theme';
 // import { emptyBasket } from '../slices/basketSlice';
 
 export default function DeliveryScreen() {
   const navigation = useNavigation();
-  const restaurant = featuredDelivery[0].restaurants[0];
-  // const restaurant = useSelector(selectResturant);
-  // const dispatch = useDispatch();
+  // const restaurant = featuredDelivery[0].restaurants[0];
+  const restaurant = useAppSelector(selectRestaurant);
+  const dispatch = useAppDispatch();
   const handleCancel = () => {
-    // dispatch(emptyBasket());
-    navigation.navigate(SCENE_NAME.ACTIVITIES_TAB);
+    dispatch(emptyBasket({}));
+    navigation.navigate(SCENE_NAME.GROCERIES_TAB);
   };
   return (
     <View className="flex-1">

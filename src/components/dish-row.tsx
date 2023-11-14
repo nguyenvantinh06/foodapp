@@ -1,4 +1,4 @@
-import {View, Text, TouchableOpacity, Image} from 'react-native';
+import {View, Text, TouchableOpacity} from 'react-native';
 import React, {useState} from 'react';
 // import {urlFor} from '../sanity';
 import {useDispatch, useSelector} from 'react-redux';
@@ -7,21 +7,26 @@ import {themeColors} from 'src/config/theme';
 import AppText from './app-text';
 import VectorIcon from './vector-icons';
 import {getSize} from 'src/hooks/use-resize-hoc';
-// import {
-//   addToBasket,
-//   removeFromBasket,
-//   selectBasketItemsById,
-// } from '../slices/basketSlice';
+import {useAppDispatch, useAppSelector} from 'src/store/hooks';
+import {
+  addToBasket,
+  removeFromBasket,
+  selectBasketItemsById,
+} from 'src/store/slices/basket-slice';
 
 export default function DishRow({item}: any) {
-  //   const dispatch = useDispatch();
-  //   const basketItems = useSelector(state => selectBasketItemsById(state, id));
-  //   const handleIncrease = () => {
-  //     dispatch(addToBasket({id, name, price, image, description}));
-  //   };
-  //   const handleDecrease = () => {
-  //     dispatch(removeFromBasket({id}));
-  //   };
+  const dispatch = useAppDispatch();
+  const basketItems = useAppSelector(state =>
+    selectBasketItemsById(state, item?.id),
+  );
+  const handleIncrease = () => {
+    const {id, name, price, image, description} = item;
+    dispatch(addToBasket({id, name, price, image, description}));
+  };
+  const handleDecrease = () => {
+    const {id} = item;
+    dispatch(removeFromBasket({id}));
+  };
   return (
     <>
       <View className="flex-row items-center bg-white p-3 rounded-3xl shadow-2xl mb-3 mx-2">
@@ -44,36 +49,21 @@ export default function DishRow({item}: any) {
             </AppText>
             <View className="flex-row items-center">
               <TouchableOpacity
-                // onPress={handleDecrease}
-                onPress={() => {}}
-                // disabled={!basketItems.length}
+                onPress={handleDecrease}
+                disabled={!basketItems.length}
                 className="p-1 rounded-full"
                 style={{backgroundColor: themeColors.bgColor(1)}}>
-                {/* <Icon.Minus
-                  strokeWidth={2}
-                  height={20}
-                  width={20}
-                  stroke="white"
-                /> */}
                 <VectorIcon.MaterialCommunityIcons
                   name="minus-circle-outline"
                   size={getSize.m(20)}
                   color={'white'}
                 />
               </TouchableOpacity>
-              {/* <AppText className="px-3">{basketItems.length}</AppText> */}
-              <AppText className="px-3">{'0'}</AppText>
+              <AppText className="px-3">{basketItems.length}</AppText>
               <TouchableOpacity
-                // onPress={handleIncrease}
-                onPress={() => {}}
+                onPress={handleIncrease}
                 className="p-1 rounded-full"
                 style={{backgroundColor: themeColors.bgColor(1)}}>
-                {/* <Icon.Plus
-                  strokeWidth={2}
-                  height={20}
-                  width={20}
-                  stroke="white"
-                /> */}
                 <VectorIcon.MaterialCommunityIcons
                   name="plus-circle-outline"
                   size={getSize.m(20)}

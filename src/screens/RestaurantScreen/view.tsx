@@ -9,9 +9,6 @@ import {
 import React, {useEffect, useLayoutEffect} from 'react';
 import {useNavigation, useRoute} from '@react-navigation/native';
 // import {urlFor} from '../sanity';
-// import DishRow from '../components/dishRow';
-// import BasketIcon from 'src/components/basketIcon';
-import {useDispatch, useSelector} from 'react-redux';
 import {COLORS, themeColors} from 'src/config/theme';
 import AppText from 'src/components/app-text';
 import AppImage from 'src/components/app-image';
@@ -19,38 +16,54 @@ import DishRow from 'src/components/dish-row';
 import VectorIcon from 'src/components/vector-icons';
 import {getSize} from 'src/hooks/use-resize-hoc';
 import BasketIcon from 'src/components/basket-icon';
-// import {selectResturant, setResturant} from '../slices/resturantSlice';
-// import {emptyBasket} from '../slices/basketSlice';
+import {
+  selectRestaurant,
+  setRestaurant,
+} from 'src/store/slices/restaurant-slice';
+import {emptyBasket} from 'src/store/slices/basket-slice';
+import {useAppDispatch, useAppSelector} from 'src/store/hooks';
 
 export default function RestaurantScreen() {
   const navigation = useNavigation();
-  // const resturant = useSelector(selectResturant);
-  // let dispatch = useDispatch();
+  const restaurant = useAppSelector(selectRestaurant);
+  let dispatch = useAppDispatch();
   const {
     params: {item},
   } = useRoute();
-  // useLayoutEffect(() => {
-  //   navigation.setOptions({headerShown: false});
-  // }, []);
-  // useEffect(() => {
-  //   if (resturant && resturant.id != id) {
-  //     dispatch(emptyBasket());
-  //   }
-  //   dispatch(
-  //     setResturant({
-  //       id,
-  //       title,
-  //       imgUrl,
-  //       rating,
-  //       type,
-  //       address,
-  //       description,
-  //       dishes,
-  //       lng,
-  //       lat,
-  //     }),
-  //   );
-  // }, []);
+  useLayoutEffect(() => {
+    navigation.setOptions({headerShown: false});
+  }, []);
+  useEffect(() => {
+    if (restaurant && restaurant.id != item?.id) {
+      dispatch(emptyBasket({}));
+    }
+    const {
+      id,
+      title,
+      imgUrl,
+      rating,
+      type,
+      address,
+      description,
+      dishes,
+      lng,
+      lat,
+    } = item;
+    dispatch(
+      setRestaurant({
+        id,
+        title,
+        imgUrl,
+        rating,
+        type,
+        address,
+        description,
+        dishes,
+        lng,
+        lat,
+      }),
+    );
+  }, []);
   return (
     <>
       <BasketIcon />
@@ -121,10 +134,6 @@ export default function RestaurantScreen() {
               <DishRow
                 key={dish._id || dish?.id}
                 id={dish._id || dish?.id}
-                // name={dish.name}
-                // description={dish.description}
-                // price={dish.price}
-                // image={dish.image}
                 item={dish}
               />
             );

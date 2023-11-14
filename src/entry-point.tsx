@@ -51,15 +51,27 @@ import RootScreens from 'src/screens';
 import './locales/IMLocalize';
 import SplashScreen from 'react-native-splash-screen';
 
+import {Provider} from 'react-redux';
+import {PersistGate} from 'redux-persist/es/integration/react';
+import {persistor, store} from 'src/store/store';
+import Loading from 'src/components/app-loading';
+import {SafeAreaProvider} from 'react-native-safe-area-context';
+
 export default function App() {
   useEffect(() => {
     SplashScreen.hide();
   }, []);
 
   return (
-    <GestureHandlerRootView style={{flex: 1}}>
-      {/* content */}
-      <RootScreens />
-    </GestureHandlerRootView>
+    <Provider store={store}>
+      <PersistGate loading={<Loading />} persistor={persistor}>
+        <GestureHandlerRootView style={{flex: 1}}>
+          {/* content */}
+          <SafeAreaProvider>
+            <RootScreens />
+          </SafeAreaProvider>
+        </GestureHandlerRootView>
+      </PersistGate>
+    </Provider>
   );
 }

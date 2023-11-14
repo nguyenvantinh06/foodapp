@@ -40,10 +40,10 @@ export default function FeatureRow({id, item}: any) {
           paddingHorizontal: 15,
         }}
         className="overflow-visible py-5">
-        {item?.restaurants.map(restaurant => {
+        {item?.restaurants.map((restaurant, index) => {
           return (
             <RestaurantCard
-              key={restaurant._id}
+              key={restaurant._id || index}
               id={restaurant._id}
               // imgUrl={restaurant.image}
               // title={restaurant.name}
