@@ -3,19 +3,18 @@ import React, {useState, useEffect} from 'react';
 import {categoriesDelivery} from 'src/utils/dummy-data';
 import {urlFor} from 'src/services/santity';
 import AppImage from './app-image';
-// import {getCategories} from '../api';
-// import {urlFor} from '../sanity';
-// import {themeColors} from '../theme';
+import {getCategories} from 'src/apis';
+import {CategoryDeliveryDto} from 'src/utils/data-dto';
 
 export default function CategoriesDelivery() {
   const [activeCategory, setActiveCategory] = useState(null);
-  //   const [categories, setCategories] = useState([]);
-  //   useEffect(() => {
-  //     getCategories().then(data => {
-  //       // console.log('got data', data[0].name);
-  //       setCategories(data);
-  //     });
-  //   }, []);
+  const [categories, setCategories] = useState<CategoryDeliveryDto[]>([]);
+  useEffect(() => {
+    getCategories().then(data => {
+      console.log('got data', data);
+      setCategories(data);
+    });
+  }, []);
 
   return (
     <View className="mt-4">
@@ -27,7 +26,7 @@ export default function CategoriesDelivery() {
         contentContainerStyle={{
           paddingHorizontal: 15,
         }}>
-        {categoriesDelivery?.map(category => {
+        {categories?.map(category => {
           let isActive = category._id == activeCategory;
           let btnClass = isActive ? ' bg-gray-600' : ' bg-gray-200';
           let textClass = isActive
@@ -41,11 +40,11 @@ export default function CategoriesDelivery() {
                 onPress={() => setActiveCategory(category._id)}
                 className={'p-1 rounded-full shadow' + btnClass}>
                 <AppImage
-                  style={{width: 45, height: 45}}
-                  //   source={{
-                  //     uri: urlFor(category.image).url(),
-                  //   }}
-                  source={category.image}
+                  style={{width: 45, height: 45, borderRadius: 45 / 2}}
+                  source={{
+                    uri: urlFor(category.image?.asset).url(),
+                  }}
+                  // source={category.image}
                 />
               </TouchableOpacity>
               <Text className={'text-sm ' + textClass}>{category.name}</Text>

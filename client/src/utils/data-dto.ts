@@ -10,3 +10,19 @@ export interface MealDto {
   strMealThumb: string;
   idMeal: string;
 }
+
+export interface CategoryDeliveryDto {
+  _createdAt: string;
+  _id: string;
+  _rev: string;
+  _type: string;
+  _updatedAt: string;
+  description: string;
+  image: ImageDelivery;
+  name: string;
+}
+
+export interface ImageDelivery {
+  _type: string;
+  asset: Array<Object>;
+}

@@ -8,7 +8,6 @@ import {useNavigation} from '@react-navigation/native';
 import AppText from 'src/components/app-text';
 import AppImage from 'src/components/app-image';
 import {View} from 'react-native';
-import {styled} from 'nativewind';
 import {SCENE_NAME} from 'src/utils/app-const';
 import NavigationService from 'src/navigation/navigations-service';
 import {getItem} from 'src/utils/async-storage';
