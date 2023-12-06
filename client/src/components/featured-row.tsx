@@ -3,16 +3,16 @@ import React, {useEffect, useState} from 'react';
 import {themeColors} from 'src/config/theme';
 import AppText from './app-text';
 import RestaurantCard from './restaurant-card';
-// import { getFeaturedResturantById } from '../api'
+import {getFeaturedRestaurantById} from 'src/apis';
 
 export default function FeatureRow({id, item}: any) {
-  // const [resturants, setResturants] = useState([]);
+  const [restaurants, setRestaurants] = useState([]);
 
   useEffect(() => {
-    // getFeaturedResturantById(id).then(data=>{
-    //   // console.log('got data: ',data);
-    //   setResturants(data?.resturants);
-    // })
+    getFeaturedRestaurantById(id).then(data => {
+      // console.log('got data: ',data);
+      setRestaurants(data?.restaurants);
+    });
   }, [id]);
   // console.log(resturants);
 

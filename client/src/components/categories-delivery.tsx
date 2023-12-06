@@ -1,10 +1,10 @@
 import {View, Text, ScrollView, TouchableOpacity, Image} from 'react-native';
 import React, {useState, useEffect} from 'react';
 import {categoriesDelivery} from 'src/utils/dummy-data';
-import {urlFor} from 'src/services/santity';
 import AppImage from './app-image';
 import {getCategories} from 'src/apis';
 import {CategoryDeliveryDto} from 'src/utils/data-dto';
+import {urlFor} from 'src/apis/sanity';
 
 export default function CategoriesDelivery() {
   const [activeCategory, setActiveCategory] = useState(null);
@@ -42,7 +42,7 @@ export default function CategoriesDelivery() {
                 <AppImage
                   style={{width: 45, height: 45, borderRadius: 45 / 2}}
                   source={{
-                    uri: urlFor(category.image?.asset).url(),
+                    uri: urlFor(category.image).url(),
                   }}
                   // source={category.image}
                 />

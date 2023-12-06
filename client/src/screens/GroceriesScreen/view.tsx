@@ -16,20 +16,19 @@ import {getSize} from 'src/hooks/use-resize-hoc';
 import AppText from 'src/components/app-text';
 import {COLORS, themeColors} from 'src/config/theme';
 import FeatureRow from 'src/components/featured-row';
-// import { getFeaturedResturants } from '../api';
-// import * as Icon from "react-native-feather";
+import {getFeaturedRestaurants} from 'src/apis';
 
 export default function GroceriesScreen() {
-  // const [featuredCategories, setFeaturedCategories] = useState([])
+  const [featuredCategories, setFeaturedCategories] = useState([]);
   const navigation = useNavigation();
-  // useLayoutEffect(() => {
-  //   navigation.setOptions({headerShown: false})
-  // }, [])
-  // useEffect(()=>{
-  //     getFeaturedResturants().then(data=>{
-  //         setFeaturedCategories(data);
-  //     })
-  // },[])
+  useLayoutEffect(() => {
+    navigation.setOptions({headerShown: false});
+  }, []);
+  useEffect(() => {
+    getFeaturedRestaurants().then(data => {
+      setFeaturedCategories(data);
+    });
+  }, []);
 
   return (
     <SafeAreaView className="bg-white flex-1">
@@ -85,7 +84,7 @@ export default function GroceriesScreen() {
 
         {/* featured */}
         <View className="mt-5">
-          {featuredDelivery?.map((category, index) => {
+          {featuredCategories?.map((category, index) => {
             return (
               <FeatureRow
                 key={index}

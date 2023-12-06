@@ -14,6 +14,7 @@ import AppText from './app-text';
 import {COLORS, themeColors} from 'src/config/theme';
 import VectorIcon from './vector-icons';
 import {getSize} from 'src/hooks/use-resize-hoc';
+import {urlFor} from 'src/apis/sanity';
 
 export default function RestaurantCard({id, restaurant}: any) {
   // console.log(urlFor(imgUrl).url());
@@ -30,8 +31,8 @@ export default function RestaurantCard({id, restaurant}: any) {
         className="mr-6 bg-white rounded-3xl shadow-lg">
         <AppImage
           className="h-36 w-64 rounded-t-3xl"
-          //   source={{uri: urlFor(imgUrl).url()}}
-          source={restaurant?.image}
+          source={{uri: urlFor(restaurant?.image).url()}}
+          // source={restaurant?.image}
         />
 
         <View className="px-3 pb-4 space-y-2">
@@ -51,7 +52,7 @@ export default function RestaurantCard({id, restaurant}: any) {
               </AppText>{' '}
               ·{' '}
               <AppText className="font-semibold text-gray-700">
-                {restaurant?.type}
+                {restaurant?.type?.name}
               </AppText>
             </AppText>
           </View>

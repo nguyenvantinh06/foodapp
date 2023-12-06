@@ -1,14 +1,6 @@
-import {
-  View,
-  Text,
-  StatusBar,
-  ScrollView,
-  Image,
-  TouchableOpacity,
-} from 'react-native';
+import {View, StatusBar, ScrollView, TouchableOpacity} from 'react-native';
 import React, {useEffect, useLayoutEffect} from 'react';
 import {useNavigation, useRoute} from '@react-navigation/native';
-// import {urlFor} from '../sanity';
 import {COLORS, themeColors} from 'src/config/theme';
 import AppText from 'src/components/app-text';
 import AppImage from 'src/components/app-image';
@@ -22,6 +14,7 @@ import {
 } from 'src/store/slices/restaurant-slice';
 import {emptyBasket} from 'src/store/slices/basket-slice';
 import {useAppDispatch, useAppSelector} from 'src/store/hooks';
+import {urlFor} from 'src/apis/sanity';
 
 export default function RestaurantScreen() {
   const navigation = useNavigation();
@@ -71,8 +64,8 @@ export default function RestaurantScreen() {
         <View className="relative">
           <AppImage
             className="w-full h-72"
-            // source={{uri: urlFor(imgUrl).url()}}
-            source={item?.image}
+            source={{uri: urlFor(item?.image).url()}}
+            // source={item?.image}
           />
           <TouchableOpacity
             onPress={() => navigation.goBack()}
@@ -104,7 +97,7 @@ export default function RestaurantScreen() {
                     (4.6k review)
                   </AppText> ·{' '}
                   <AppText className="font-semibold text-gray-700">
-                    {item?.type}
+                    {item?.type?.name}
                   </AppText>
                 </AppText>
               </View>
