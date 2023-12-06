@@ -22,7 +22,7 @@ import {
   selectBasketItems,
   selectBasketTotal,
 } from 'src/store/slices/basket-slice';
-// import { urlFor } from '../sanity';
+import {urlFor} from 'src/apis/sanity';
 
 export default function CartScreen() {
   const restaurant = useAppSelector(selectRestaurant);
@@ -102,8 +102,8 @@ export default function CartScreen() {
               </AppText>
               <AppImage
                 className="h-14 w-14 rounded-full"
-                // source={{uri: urlFor(items[0]?.image).url()}}
-                source={items[0]?.image}
+                source={{uri: urlFor(items[0]?.image).url()}}
+                // source={items[0]?.image}
               />
               <AppText className="flex-1 font-bold text-gray-700">
                 {items[0]?.name}
