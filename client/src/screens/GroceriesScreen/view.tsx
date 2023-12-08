@@ -88,7 +88,7 @@ export default function GroceriesScreen() {
             return (
               <FeatureRow
                 key={index}
-                id={category._id || category?.id}
+                id={category?._id || category?.id}
                 // title={category.name}
                 // restaurants={category?.restaurants}
                 // description={category.description}

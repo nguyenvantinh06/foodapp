@@ -23,6 +23,7 @@ export default function RestaurantScreen() {
   const {
     params: {item},
   } = useRoute();
+  console.log('item restaurant', item);
   useLayoutEffect(() => {
     navigation.setOptions({headerShown: false});
   }, []);
@@ -123,6 +124,7 @@ export default function RestaurantScreen() {
           <AppText className="px-4 py-4 text-2xl font-bold">Menu</AppText>
           {/* dishes */}
           {item?.dishes.map(dish => {
+            console.log('dish', dish);
             return (
               <DishRow
                 key={dish._id || dish?.id}

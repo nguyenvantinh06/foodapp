@@ -17,15 +17,15 @@ import {urlFor} from 'src/apis/sanity';
 export default function DishRow({item}: any) {
   const dispatch = useAppDispatch();
   const basketItems = useAppSelector(state =>
-    selectBasketItemsById(state, item?.id),
+    selectBasketItemsById(state, item?._id),
   );
   const handleIncrease = () => {
-    const {id, name, price, image, description} = item;
-    dispatch(addToBasket({id, name, price, image, description}));
+    const {_id, name, price, image, description} = item;
+    dispatch(addToBasket({_id, name, price, image, description}));
   };
   const handleDecrease = () => {
-    const {id} = item;
-    dispatch(removeFromBasket({id}));
+    const {_id} = item;
+    dispatch(removeFromBasket({_id}));
   };
   return (
     <View className="flex-row items-center bg-white p-3 rounded-3xl shadow-2xl mb-3 mx-2">
