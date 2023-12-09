@@ -131,23 +131,23 @@ yarn android
 ### Demo
 
 <div style="display: flex; flex-wrap: wrap">
- <img src="./client/src/assets/intro/splashScreen.png" width="250" style="margin: 12px">
+ <img src="./client/src/assets/intro/splashScreen.png" width="250" style="margin: 12">
  <img src="./client/src/assets/intro/home.png" width="250" style="margin: 12px">
- <img src="./client/src/assets/intro/homeSelect.png" width="250" style="margin: 12px">
+ <img src="./client/src/assets/intro/homeSelect.png" width="250" style="margin: 12">
 </div>
 <div style="display: flex; flex-wrap: wrap">
- <img src="./client/src/assets/intro/foodDetail.png" width="250" style="margin: 12px">
- <img src="./client/src/assets/intro/foodVideo.png" width="250" style="margin: 12px">
- <img src="./client/src/assets/intro/foodFavorite.png" width="250" style="margin: 12px">
+ <img src="./client/src/assets/intro/foodDetail.png" width="250" style="margin: 12">
+ <img src="./client/src/assets/intro/foodVideo.png" width="250" style="margin: 12">
+ <img src="./client/src/assets/intro/foodFavorite.png" width="250" style="margin: 12">
 </div>
 <div style="display: flex; flex-wrap: wrap">
- <img src="./client/src/assets/intro/groceries.png" width="250" style="margin: 12px">
- <img src="./client/src/assets/intro/groceriesDetail.png" width="250" style="margin: 12px">
- <img src=src="./client/src/assets/intro/addToCart.png" width="250" style="margin: 12px">
+ <img src="./client/src/assets/intro/groceries.png" width="250" style="margin: 12">
+ <img src="./client/src/assets/intro/groceriesDetail.png" width="250" style="margin: 12">
+ <img src=src="./client/src/assets/intro/addToCart.png" width="250" style="margin: 12">
 </div>
 <div style="display: flex; flex-wrap: wrap">
- <img src="./client/src/assets/intro/cart.png" width="250" style="margin: 12px">
- <img src="./client/src/assets/intro/order.png" width="250" style="margin: 12px">
+ <img src="./client/src/assets/intro/cart.png" width="250" style="margin: 12">
+ <img src="./client/src/assets/intro/order.png" width="250" style="margin: 12">
 </div>
 
 # Learn More
