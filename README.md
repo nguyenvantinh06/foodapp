@@ -143,7 +143,7 @@ yarn android
 <div style="display: flex; flex-wrap: wrap">
  <img src="./client/src/assets/intro/groceries.png" width="250" style="margin: 12">
  <img src="./client/src/assets/intro/groceriesDetail.png" width="250" style="margin: 12">
- <img src=src="./client/src/assets/intro/addToCart.png" width="250" style="margin: 12">
+ <img src=src="./client/src/assets/intro/groceriesSelect.png" width="250" style="margin: 12">
 </div>
 <div style="display: flex; flex-wrap: wrap">
  <img src="./client/src/assets/intro/cart.png" width="250" style="margin: 12">
